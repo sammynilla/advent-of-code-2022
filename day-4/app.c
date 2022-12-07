@@ -27,19 +27,11 @@ int main(int argc, char** argv) {
     printf("<%i,%i>", id[0], id[1]);
     printf("<%i,%i>", id[2], id[3]);
 
-    if (id[0] <= id[2]) {
-      if (id[2] <= id[1] && id[3] <= id[1]) {
-        printf("\t| 2->1\n");
-        pairs++;
-        continue;
-      }
-    }
-    if (id[2] <= id[0]) {
-      if (id[0] <= id[3] && id[1] <= id[3]) {
-        printf("\t| 1->2\n");
-        pairs++;
-        continue;
-      }
+    if ((id[0] <= id[3] && id[0] >= id[2]) ||
+        (id[2] <= id[1] && id[2] >= id[0])) {
+      printf("\t| overlap\n");
+      pairs++;
+      continue;
     }
     printf("\n");
   }
